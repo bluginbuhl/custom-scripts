@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+import json
+import requests
+
+IP_API_URL = "http://ip-api.com/json"
+
+try:
+    data = requests.get(IP_API_URL).json()
+except:
+    print("You are not currently connected to the internet.")
+    raise
+
+ipv4, city, region, country = data['query'], data['city'], data['region'], data['country']
+
+print("%s\n%s, %s\n%s" % (ipv4, city, region, country))
